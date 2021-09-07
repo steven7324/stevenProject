@@ -21,6 +21,8 @@ jobs:
              
     - name: Build with Gradle
       run: ./gradlew build
-      
     - name: JUnit Report Action
       uses: mikepenz/action-junit-report@v2.4.3
+      if: always()
+      with:
+        report_paths: '**/build/test-results/test/TEST-*.xml'
