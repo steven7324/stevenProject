@@ -25,4 +25,5 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
+    systemProperties = System.getProperties()
 }
