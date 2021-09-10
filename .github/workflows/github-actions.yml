@@ -2,7 +2,7 @@ name: Selenium CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request:
     branches: [ master ]
 
@@ -20,8 +20,10 @@ jobs:
         java-version: 1.11
              
              
-    - name: Build with Gradle
+    - name: Build with Gradle Chrome
       run: ./gradlew clean test -DBROWSER=chrome
+    - name: Build with Gradle Firefox
+      run: ./gradlew clean test -DBROWSER=firefox
     - name: JUnit Report Action
       uses: mikepenz/action-junit-report@v2.4.3
       if: always()
