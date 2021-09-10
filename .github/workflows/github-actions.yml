@@ -2,7 +2,7 @@ name: Selenium CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, main ]
   pull_request:
     branches: [ master ]
 
@@ -12,18 +12,20 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-    
-    - name: set up JDK 11
-      uses: actions/setup-java@v1
-      with:
-        java-version: 1.11
-             
-             
-    - name: Build with Gradle
-      run: ./gradlew clean test -DBROWSER=chrome
-    - name: JUnit Report Action
-      uses: mikepenz/action-junit-report@v2.4.3
-      if: always()
-      with:
-        report_paths: '**/build/test-results/test/TEST-*.xml'
+      - uses: actions/checkout@v2
+
+      - name: set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+
+
+      - name: Build with Gradle Chrome
+        run: ./gradlew clean test -DBROWSER=chrome
+      - name: Build with Gradle Firefox
+        run: ./gradlew clean test -DBROWSER=firefox
+      - name: JUnit Report Action
+        uses: mikepenz/action-junit-report@v2.4.3
+        if: always()
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
