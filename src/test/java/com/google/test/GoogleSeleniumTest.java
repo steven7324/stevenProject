@@ -16,8 +16,8 @@ public class GoogleSeleniumTest {
     public WebDriver driver = new Browser().browser();
 
     @Test
-    public void searchSomethingInGooglePageWithChrome() throws InterruptedException {
-        driver.manage().window().maximize();
+    public void searchSomethingInGooglePageWithChromeAndFirefox() throws InterruptedException {
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.get("https://www.google.com");
         WebElement txtSearchField = driver.findElement(By.name("q"));
         txtSearchField.sendKeys("cars");
