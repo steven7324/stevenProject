@@ -1,8 +1,7 @@
 package com.google.test;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.google.test.util.Browser;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GoogleSeleniumTest {
 
-    public WebDriver driver = new BrowserUtil().browser();
+    public WebDriver driver = new Browser().browser();
 
     @Test
     public void searchSomethingInGooglePageWithChrome() throws InterruptedException {

@@ -10,6 +10,9 @@ jobs:
   build:
 
     runs-on: windows-latest
+    strategy:
+      matrix:
+        browser: ["chrome", "browser"]
 
     steps:
       - uses: actions/checkout@v2
@@ -21,7 +24,7 @@ jobs:
 
 
       - name: Build with Gradle Chrome
-        run: ./gradlew clean test -DBROWSER=chrome
+        run: ./gradlew clean test -DBROWSER= ${{ matrix.browser }}
       - name: Build with Gradle Firefox
         run: ./gradlew clean test -DBROWSER=firefox
       - name: JUnit Report Action
