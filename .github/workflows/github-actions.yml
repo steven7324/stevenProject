@@ -24,7 +24,7 @@ jobs:
 
 
       - name: Build with Gradle Chrome
-        run: ./gradlew clean test -DBROWSER= ${{ matrix.browser }}
+        run: ./gradlew clean test -DBROWSER=${{ matrix.browser }}
       - name: Build with Gradle Firefox
         run: ./gradlew clean test -DBROWSER=firefox
       - name: JUnit Report Action
