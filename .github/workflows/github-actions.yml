@@ -11,8 +11,9 @@ jobs:
 
     runs-on: windows-latest
     strategy:
+      fail-fast: false
       matrix:
-        browser: [chrome, firefox]
+        browser: [chrome,firefox]
 
     steps:
       - uses: actions/checkout@v2
@@ -24,11 +25,9 @@ jobs:
 
 
       - name: Build with Gradle Chrome
-        run: ./gradlew clean test -DBROWSER=${{ matrix.browser }}
-      - name: Build with Gradle Firefox
-        run: ./gradlew clean test -DBROWSER=firefox
+        run: ./gradlew clean test -DBROWSER=${{matrix.browser}}
       - name: JUnit Report Action
         uses: mikepenz/action-junit-report@v2.4.3
-        if: always()
+        if: success()
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
