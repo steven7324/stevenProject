@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class BuyPracticeTest {
 
@@ -28,11 +30,14 @@ public class BuyPracticeTest {
         wait.until(ExpectedConditions.visibilityOf(btnViewCloth));
         btnViewCloth.click();
 
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         WebElement btnAddToCart = driver.findElement(By.xpath("//button[normalize-space()='Add to cart']"));
+        js.executeScript("arguments[0].scrollIntoView(true);", btnAddToCart);
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
 
         WebElement btnCheckout = driver.findElement(By.xpath("//a[@title='Proceed to checkout']"));
+        js.executeScript("arguments[0].scrollIntoView(true);", btnCheckout);
         wait.until(ExpectedConditions.visibilityOf(btnCheckout));
         btnCheckout.click();
 
@@ -45,8 +50,6 @@ public class BuyPracticeTest {
         txtPassword.sendKeys("Steven21");
         WebElement btnSubmit = driver.findElement(By.id("SubmitLogin"));
         btnSubmit.click();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        TimeUnit.SECONDS.sleep(5);
 
         WebElement btnCheckoutAddress = driver.findElement(By.xpath("//span[text()='Proceed to checkout']"));
         btnCheckoutAddress.click();
