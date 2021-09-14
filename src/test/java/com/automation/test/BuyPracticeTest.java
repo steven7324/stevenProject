@@ -30,6 +30,7 @@ public class BuyPracticeTest {
         wait.until(ExpectedConditions.visibilityOf(btnViewCloth));
         btnViewCloth.click();
 
+        wait.until(ExpectedConditions.invisibilityOf(btnViewCloth));
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         WebElement btnAddToCart = driver.findElement(By.xpath("//p[@id='add_to_cart']//button"));
         js.executeScript("arguments[0].scrollIntoView(true);", btnAddToCart);
