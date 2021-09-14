@@ -8,15 +8,19 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 
 public class BuyPracticeTest {
 
     public WebDriver driver = BrowserManager.build();
-    public WebDriverWait wait = new WebDriverWait(driver, 30);
+    Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
 
     @Test
     public void addSomethingToCartAndBuyIt() throws InterruptedException {
