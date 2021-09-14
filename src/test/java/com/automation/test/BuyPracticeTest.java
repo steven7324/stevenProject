@@ -16,10 +16,11 @@ import java.util.concurrent.TimeUnit;
 public class BuyPracticeTest {
 
     public WebDriver driver = BrowserManager.build();
-    public WebDriverWait wait = new WebDriverWait(driver,30);
+    public WebDriverWait wait = new WebDriverWait(driver, 30);
 
     @Test
-    public void addSomethingToCartAndBuyIt() {
+    public void addSomethingToCartAndBuyIt() throws InterruptedException {
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.get("http://automationpractice.com/");
         //addToCart and Checkout
         WebElement btnViewCloth = driver.findElement(By.xpath("//ul[@id='homefeatured']/li[1]/div"));
@@ -30,8 +31,8 @@ public class BuyPracticeTest {
         wait.until(ExpectedConditions.visibilityOf(btnViewCloth));
         btnViewCloth.click();
 
+        TimeUnit.SECONDS.sleep(15);
         wait.until(ExpectedConditions.invisibilityOf(btnViewCloth));
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         WebElement btnAddToCart = driver.findElement(By.xpath("//p[@id='add_to_cart']//button"));
         js.executeScript("arguments[0].scrollIntoView(true);", btnAddToCart);
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
