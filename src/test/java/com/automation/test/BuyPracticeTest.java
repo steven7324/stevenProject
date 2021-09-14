@@ -7,10 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;
@@ -21,6 +21,7 @@ public class BuyPracticeTest {
 
     public WebDriver driver = BrowserManager.build();
     Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).ignoring(NoSuchElementException.class);
+    Actions actions = new Actions(driver);
 
     @Test
     public void addSomethingToCartAndBuyIt() throws InterruptedException {
@@ -33,10 +34,10 @@ public class BuyPracticeTest {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", btnViewCloth);
         wait.until(ExpectedConditions.visibilityOf(btnViewCloth));
-        btnViewCloth.click();
+        actions.moveToElement(btnViewCloth).perform();
 
-        WebElement btnAddToCart = driver.findElement(By.id("add_to_cart"));
-        js.executeScript("arguments[0].scrollIntoView(true);", btnAddToCart);
+        WebElement btnAddToCart = driver.findElement(By.xpath("(//span[text()='Add to cart'])[1]"));
+        actions.moveToElement(btnAddToCart).perform();
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
 
@@ -74,7 +75,8 @@ public class BuyPracticeTest {
 
         //Verify the order is completed
         WebElement verifyElement = driver.findElement(By.xpath("//p[@class='cheque-indent']"));
-
+        js.executeScript("arguments[0].scrollIntoView(true);", verifyElement);
+        wait.until(ExpectedConditions.visibilityOf(verifyElement));
         Assertions.assertEquals(verifyElement.getText(), "Your order on My Store is complete.");
         driver.quit();
     }
