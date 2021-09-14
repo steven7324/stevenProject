@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BrowserManager {
 
     public static WebDriver build() {
-        String BROWSER = System.getProperty("BROWSER", "firefox");
+        String BROWSER = System.getProperty("BROWSER", "chrome");
 
         switch (BROWSER) {
             case "chrome":
