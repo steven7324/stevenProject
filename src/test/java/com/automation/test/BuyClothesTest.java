@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.awt.*;
 import java.time.Duration;
 import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 
 
 public class BuyClothesTest {
@@ -30,6 +31,7 @@ public class BuyClothesTest {
 
     @Test
     public void addSomethingToCartAndBuyIt() {
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         driver.navigate().to("http://automationpractice.com/");
         //addToCart and Checkout
         WebElement btnViewCloth = driver.findElement(By.xpath("(//ul[@id='homefeatured']/li//a[@class='product-name'])[1]"));
