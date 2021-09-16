@@ -1,4 +1,4 @@
-package com.automation.test.util;
+package com.automation.util;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
