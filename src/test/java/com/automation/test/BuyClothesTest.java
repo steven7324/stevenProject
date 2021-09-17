@@ -19,26 +19,19 @@ public class BuyClothesTest {
         driver.navigate().to("http://automationpractice.com/");
 
         //addToCart and Checkout
-        BuyClothesPage buyClothes = new BuyClothesPage(driver);
-        buyClothes.setBtnViewCloth();
+        BuyClothesPage toBuyClothes = new BuyClothesPage(driver);
 
-        buyClothes.setBtnAddToCart();
-        buyClothes.setBtnCheckout();
-
-        buyClothes.setBtnCheckoutSummary();
-
-        buyClothes.login();
-
-        buyClothes.setBtnCheckoutAddress();
-
-        buyClothes.setCkbAgreeTerms();
-        buyClothes.setBtnPaymentMethod();
-
-        buyClothes.setBtnConfirmOrder();
-
+        toBuyClothes.chooseTheCloth();
+        toBuyClothes.addToCart();
+        toBuyClothes.checkoutTheCloth();
+        toBuyClothes.checkoutTheSummary();
+        toBuyClothes.logIntoTheApp();
+        toBuyClothes.checkoutTheAddress();
+        toBuyClothes.acceptTerms();
+        toBuyClothes.chooseThePaymentMethod();
+        toBuyClothes.confirmTheOrder();
         //Verify buy
-        buyClothes.setVerifyElement();
-
+        toBuyClothes.verifyTheBuy();
     }
 
     @AfterEach

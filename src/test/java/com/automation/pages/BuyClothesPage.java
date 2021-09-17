@@ -70,27 +70,27 @@ public class BuyClothesPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void setBtnViewCloth() {
+    public void chooseTheCloth() {
         btnViewCloth.sendKeys(Keys.DOWN);
         wait.until(ExpectedConditions.visibilityOf(btnViewCloth));
         actions.moveToElement(btnViewCloth).perform();
     }
 
-    public void setBtnAddToCart() {
+    public void addToCart() {
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
     }
 
-    public void setBtnCheckout() {
+    public void checkoutTheCloth() {
         wait.until(ExpectedConditions.visibilityOf(btnCheckout));
         btnCheckout.click();
     }
 
-    public void setBtnCheckoutSummary() {
+    public void checkoutTheSummary() {
         btnCheckoutSummary.click();
     }
 
-    public void login() {
+    public void logIntoTheApp() {
         wait.until(ExpectedConditions.visibilityOf(txtEmail));
         txtEmail.sendKeys("steven7324@yopmail.com");
         txtPassword.sendKeys("Steven21");
@@ -98,27 +98,27 @@ public class BuyClothesPage {
 
     }
 
-    public void setBtnCheckoutAddress() {
+    public void checkoutTheAddress() {
         btnCheckoutAddress.click();
     }
 
-    public void setCkbAgreeTerms() {
+    public void acceptTerms() {
         ckbAgreeTerms.click();
         btnCheckoutShipping.click();
     }
 
-    public void setBtnPaymentMethod() {
+    public void chooseThePaymentMethod() {
         wait.until(ExpectedConditions.visibilityOf(btnPaymentMethod));
         btnPaymentMethod.click();
 
     }
 
-    public void setBtnConfirmOrder() {
+    public void confirmTheOrder() {
         btnConfirmOrder.click();
 
     }
 
-    public void setVerifyElement() {
+    public void verifyTheBuy() {
         wait.until(ExpectedConditions.visibilityOf(verifyElement));
         Assertions.assertEquals(verifyElement.getText(), "Your order on My Store is complete.");
 
