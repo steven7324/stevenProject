@@ -1,8 +1,9 @@
 package com.automation.test;
 
-import com.automation.pages.BuyClothesPage;
+import com.automation.pages.*;
 import com.automation.util.BrowserManager;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -12,30 +13,46 @@ import java.util.concurrent.TimeUnit;
 public class BuyClothesTest {
 
     public WebDriver driver = BrowserManager.build();
+    AddToCartPage addToCart;
+    SignInPage toSignIn;
+    CheckoutClothPage checkoutCloth;
+    SummaryPage inTheSummaryStep;
+    ShippingPage inTheShippingStep;
+    AddressPage inTheAddressStep;
+    PaymentPage inThePaymentStep;
+    CompleteBuyPage toCompleteBuy;
+    VerifyBuyPage toVerifyBuy;
+
+    @BeforeEach
+    public void setUp() {
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.navigate().to("http://automationpractice.com/");
+        addToCart = new AddToCartPage(driver);
+        checkoutCloth = new CheckoutClothPage(driver);
+        toSignIn = new SignInPage(driver);
+        inTheSummaryStep = new SummaryPage(driver);
+        inTheAddressStep = new AddressPage(driver);
+        inTheShippingStep = new ShippingPage(driver);
+        inThePaymentStep = new PaymentPage(driver);
+        toCompleteBuy = new CompleteBuyPage(driver);
+        toVerifyBuy = new VerifyBuyPage(driver);
+    }
 
     @Test
     public void addSomethingToCartAndBuyIt() {
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        driver.navigate().to("http://automationpractice.com/");
-
-        //addToCart and Checkout
-        BuyClothesPage toBuyClothes = new BuyClothesPage(driver);
-
-        toBuyClothes.chooseTheCloth();
-        toBuyClothes.addToCart();
-        toBuyClothes.checkoutTheCloth();
-        toBuyClothes.checkoutTheSummary();
-        toBuyClothes.logIntoTheApp();
-        toBuyClothes.checkoutTheAddress();
-        toBuyClothes.acceptTerms();
-        toBuyClothes.chooseThePaymentMethod();
-        toBuyClothes.confirmTheOrder();
-        //Verify buy
-        toBuyClothes.verifyTheBuy();
+        addToCart.theChosenCloth();
+        checkoutCloth.inTheMainPage();
+        inTheSummaryStep.proceedToCheckout();
+        toSignIn.sendTheCredentials("steven7324@yopmail.com", "Steven21");
+        inTheAddressStep.proceedToCheckout();
+        inTheShippingStep.proceedToCheckout();
+        inThePaymentStep.chooseThePaymentMethod();
+        toCompleteBuy.confirmTheOrder();
+        toVerifyBuy.shouldSeeTheSuccessMessage();
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
