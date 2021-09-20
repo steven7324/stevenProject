@@ -15,9 +15,9 @@ import java.util.NoSuchElementException;
 
 public class SummaryPage {
 
-    WebDriver driver;
-    Wait<WebDriver> wait;
-    Actions actions;
+    private WebDriver driver;
+    private Wait<WebDriver> wait;
+    private Actions actions;
 
     @FindBy(xpath = "//span[text()='Proceed to checkout']")
     private WebElement btnCheckoutSummary;

@@ -3,6 +3,7 @@ package com.automation.test;
 import com.automation.pages.*;
 import com.automation.util.BrowserManager;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -48,7 +49,7 @@ public class BuyClothesTest {
         inTheShippingStep.proceedToCheckout();
         inThePaymentStep.chooseThePaymentMethod();
         toCompleteBuy.confirmTheOrder();
-        toVerifyBuy.shouldSeeTheSuccessMessage();
+        Assertions.assertEquals(toVerifyBuy.shouldSeeTheSuccessMessage(), "Your order on My Store is complete.");
     }
 
     @AfterEach

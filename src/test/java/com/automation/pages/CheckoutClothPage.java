@@ -16,9 +16,9 @@ import java.util.NoSuchElementException;
 
 public class CheckoutClothPage {
 
-    WebDriver driver;
-    Wait<WebDriver> wait;
-    Actions actions;
+    private WebDriver driver;
+    private Wait<WebDriver> wait;
+    private Actions actions;
 
     @FindBy(xpath = "//a[@title='Proceed to checkout']")
     private WebElement btnCheckout;

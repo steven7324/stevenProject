@@ -17,9 +17,9 @@ import java.util.NoSuchElementException;
 
 public class VerifyBuyPage {
 
-    WebDriver driver;
-    Wait<WebDriver> wait;
-    Actions actions;
+    private WebDriver driver;
+    private Wait<WebDriver> wait;
+    private Actions actions;
 
     @FindBy(xpath = "//p[@class='cheque-indent']")
     private WebElement verifyElement;
@@ -33,9 +33,9 @@ public class VerifyBuyPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void shouldSeeTheSuccessMessage() {
+    public String shouldSeeTheSuccessMessage() {
         wait.until(ExpectedConditions.visibilityOf(verifyElement));
-        Assertions.assertEquals(verifyElement.getText(), "Your order on My Store is complete.");
+        return verifyElement.getText();
 
     }
 }

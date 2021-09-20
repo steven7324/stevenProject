@@ -16,9 +16,9 @@ import java.util.NoSuchElementException;
 
 public class PaymentPage {
 
-    WebDriver driver;
-    Wait<WebDriver> wait;
-    Actions actions;
+    private WebDriver driver;
+    private Wait<WebDriver> wait;
+    private Actions actions;
 
     @FindBy(className = "bankwire")
     private WebElement btnPaymentMethod;

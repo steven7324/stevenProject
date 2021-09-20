@@ -16,9 +16,9 @@ import java.util.NoSuchElementException;
 
 public class SignInPage {
 
-    WebDriver driver;
-    Wait<WebDriver> wait;
-    Actions actions;
+    private WebDriver driver;
+    private Wait<WebDriver> wait;
+    private Actions actions;
 
     @FindBy(id = "email")
     private WebElement txtEmail;

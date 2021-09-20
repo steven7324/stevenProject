@@ -17,9 +17,9 @@ import java.util.NoSuchElementException;
 
 public class AddToCartPage {
 
-    WebDriver driver;
-    Wait<WebDriver> wait;
-    Actions actions;
+    private WebDriver driver;
+    private Wait<WebDriver> wait;
+    private Actions actions;
 
     @FindBy(xpath = "(//ul[@id='homefeatured']/li//a[@class='product-name'])[1]")
     private WebElement btnViewCloth;
