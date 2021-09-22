@@ -13,16 +13,16 @@ import java.util.concurrent.TimeUnit;
 
 public class BuyClothesTest {
 
-    public WebDriver driver = BrowserManager.build();
-    AddToCartPage addToCart;
-    SignInPage toSignIn;
-    CheckoutClothPage checkoutCloth;
-    SummaryPage inTheSummaryStep;
-    ShippingPage inTheShippingStep;
-    AddressPage inTheAddressStep;
-    PaymentPage inThePaymentStep;
-    CompleteBuyPage toCompleteBuy;
-    VerifyBuyPage toVerifyBuy;
+    private WebDriver driver = BrowserManager.build();
+    private AddToCartPage addToCart;
+    private SignInPage toSignIn;
+    private CheckoutClothPage checkoutCloth;
+    private SummaryPage inTheSummaryStep;
+    private ShippingPage inTheShippingStep;
+    private AddressPage inTheAddressStep;
+    private PaymentPage inThePaymentStep;
+    private CompleteBuyPage toCompleteBuy;
+    private VerifyBuyPage toVerifyBuy;
 
     @BeforeEach
     public void setUp() {

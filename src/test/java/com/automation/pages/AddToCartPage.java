@@ -27,27 +27,6 @@ public class AddToCartPage {
     @FindBy(xpath = "(//span[normalize-space()='Add to cart'])[1]")
     private WebElement btnAddToCart;
 
-    @FindBy(xpath = "//a[@title='Proceed to checkout']")
-    private WebElement btnCheckout;
-
-    @FindBy(xpath = "//span[text()='Proceed to checkout']")
-    private WebElement btnCheckoutSummary;
-
-   @FindBy(xpath = "//span[text()='Proceed to checkout']")
-    private WebElement btnCheckoutAddress;
-
-    @FindBy(id = "cgv")
-    private WebElement ckbAgreeTerms;
-
-    @FindBy(xpath = "//button[normalize-space() = 'Proceed to checkout']")
-    private WebElement btnCheckoutShipping;
-
-    @FindBy(className = "bankwire")
-    private WebElement btnPaymentMethod;
-
-    @FindBy(xpath = "//button[normalize-space()='I confirm my order']")
-    private WebElement btnConfirmOrder;
-
     public AddToCartPage(WebDriver driver) {
         this.driver = driver;
         wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
@@ -63,6 +42,7 @@ public class AddToCartPage {
         actions.moveToElement(btnViewCloth).perform();
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
+        wait.until(ExpectedConditions.invisibilityOf(btnAddToCart));
     }
 
 }
