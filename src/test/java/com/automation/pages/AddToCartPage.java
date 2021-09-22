@@ -42,7 +42,6 @@ public class AddToCartPage {
         actions.moveToElement(btnViewCloth).perform();
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
-        wait.until(ExpectedConditions.invisibilityOf(btnAddToCart));
     }
 
 }
