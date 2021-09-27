@@ -49,7 +49,7 @@ public class BuyClothesTest {
         inTheShippingStep.proceedToCheckout();
         inThePaymentStep.chooseThePaymentMethod();
         toCompleteBuy.confirmTheOrder();
-        Assertions.assertEquals(toVerifyBuy.shouldSeeTheSuccessMessage(), "Your order on My Store is complete.");
+        Assertions.assertEquals(toVerifyBuy.theCompleteOrderMessageShouldBeDisplayed(), "Your order on My Store is complete.");
     }
 
     @AfterEach
