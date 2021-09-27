@@ -32,7 +32,7 @@ public class VerifyBuyPage {
         PageFactory.initElements(driver, this);
     }
 
-    public String theCompleteOrderMessageShouldBeDisplayed() {
+    public String getCompleteOrderMessage() {
         wait.until(ExpectedConditions.visibilityOf(verifyElement));
         return verifyElement.getText();
 
