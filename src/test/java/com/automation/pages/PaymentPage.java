@@ -13,23 +13,23 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
+import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
+
 
 public class PaymentPage {
 
-    private WebDriver driver;
     private Wait<WebDriver> wait;
     private Actions actions;
 
     @FindBy(className = "bankwire")
     private WebElement btnPaymentMethod;
 
-    public PaymentPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
+    public PaymentPage() {
+        wait = new FluentWait<>(getInstanceOfSingletonBrowser().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(MoveTargetOutOfBoundsException.class);
-        actions = new Actions(driver);
-        PageFactory.initElements(driver, this);
+        actions = new Actions(getInstanceOfSingletonBrowser().getDriver());
+        PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
     }
 
     public void chooseThePaymentMethod() {

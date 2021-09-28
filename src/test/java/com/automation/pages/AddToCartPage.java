@@ -14,10 +14,11 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
+import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
+
 
 public class AddToCartPage {
 
-    private WebDriver driver;
     private Wait<WebDriver> wait;
     private Actions actions;
 
@@ -27,13 +28,12 @@ public class AddToCartPage {
     @FindBy(xpath = "(//span[normalize-space()='Add to cart'])[1]")
     private WebElement btnAddToCart;
 
-    public AddToCartPage(WebDriver driver) {
-        this.driver = driver;
-        wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
+    public AddToCartPage() {
+        wait = new FluentWait<>(getInstanceOfSingletonBrowser().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(MoveTargetOutOfBoundsException.class);
-        actions = new Actions(driver);
-        PageFactory.initElements(driver, this);
+        actions = new Actions(getInstanceOfSingletonBrowser().getDriver());
+        PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
     }
 
     public void theChosenCloth() {
