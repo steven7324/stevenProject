@@ -53,7 +53,7 @@ public class BuyClothesTest {
 
     @AfterEach
     public void tearDown() {
-        getInstanceOfSingletonBrowser().getDriver().quit();
+        getInstanceOfSingletonBrowser().closeInstanceOfSingletonBrowser();
     }
 
 }

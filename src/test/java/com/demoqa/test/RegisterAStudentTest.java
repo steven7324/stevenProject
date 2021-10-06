@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.demoqa.util.SingletonBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
 
 
 public class RegisterAStudentTest {
@@ -30,7 +30,7 @@ public class RegisterAStudentTest {
 
     @AfterEach
     public void tearDown() {
-        getInstanceOfSingletonBrowser().getDriver().quit();
+        getInstanceOfSingletonBrowser().closeInstanceOfSingletonBrowser();
     }
 
 }

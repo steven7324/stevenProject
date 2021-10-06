@@ -1,5 +1,6 @@
 package com.demoqa.pages;
 
+import com.demoqa.model.Student;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,13 +15,13 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.demoqa.util.SingletonBrowser.getInstanceOfSingletonBrowser;
-
+import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
 
 public class StudentRegistrationPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
+    private Student student;
 
     @FindBy(id = "firstName")
     private WebElement txtName;
@@ -55,29 +56,42 @@ public class StudentRegistrationPage {
                 .ignoring(MoveTargetOutOfBoundsException.class);
         actions = new Actions(getInstanceOfSingletonBrowser().getDriver());
         PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
+        student = new Student();
+
     }
 
     public void fillTheForm(String name, String lastname, String email, String mobile, String birthDate, String subjects, String filePath, String address, String state, String city) {
-        txtName.sendKeys(name);
-        txtLastName.sendKeys(lastname);
-        txtEmail.sendKeys(email);
+        student.setName(name);
+        student.setLastName(lastname);
+        student.setEmail(email);
+        student.setMobile(mobile);
+        student.setBirthDate(birthDate);
+        student.setSubjects(subjects);
+        student.setFilePath(filePath);
+        student.setAddress(address);
+        student.setState(state);
+        student.setCity(city);
+
+        txtName.sendKeys(student.getName());
+        txtLastName.sendKeys(student.getLastName());
+        txtEmail.sendKeys(student.getEmail());
         rdbMaleGender.click();
-        txtMobile.sendKeys(mobile);
+        txtMobile.sendKeys(student.getMobile());
         txtMobile.sendKeys(Keys.TAB);
         txtBirthDate.sendKeys(Keys.SPACE);
-        txtBirthDate.sendKeys(birthDate);
+        txtBirthDate.sendKeys(student.getBirthDate());
         txtBirthDate.sendKeys(Keys.ENTER);
         txtCurrentAddress.sendKeys(Keys.TAB);
         wait.until(ExpectedConditions.visibilityOf(lstSubjects));
-        lstSubjects.sendKeys(subjects);
+        lstSubjects.sendKeys(student.getSubjects());
         lstSubjects.sendKeys(Keys.TAB);
         cklHobbiesSports.click();
-        uploadPicture.sendKeys(filePath);
-        txtCurrentAddress.sendKeys(address);
-        lstStateAndCity.sendKeys(state);
+        uploadPicture.sendKeys(student.getFilePath());
+        txtCurrentAddress.sendKeys(student.getAddress());
+        lstStateAndCity.sendKeys(student.getState());
         lstStateAndCity.sendKeys(Keys.TAB);
         wait.until(ExpectedConditions.elementToBeClickable(lstCity));
-        lstCity.sendKeys(city);
+        lstCity.sendKeys(student.getCity());
         lstCity.sendKeys(Keys.TAB);
 
         wait.until(ExpectedConditions.visibilityOf(btnSubmit));

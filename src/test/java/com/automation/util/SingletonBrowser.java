@@ -25,4 +25,9 @@ public class SingletonBrowser {
         return driver;
     }
 
+    public void closeInstanceOfSingletonBrowser(){
+        instanceOfSingletonBrowser = null;
+        driver.quit();
+    }
+
 }

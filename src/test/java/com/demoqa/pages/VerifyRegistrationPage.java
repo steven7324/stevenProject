@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.demoqa.util.SingletonBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
 
 
 public class VerifyRegistrationPage {
