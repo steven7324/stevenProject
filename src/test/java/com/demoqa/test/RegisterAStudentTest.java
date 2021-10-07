@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
 
 
 public class RegisterAStudentTest {
@@ -24,7 +24,7 @@ public class RegisterAStudentTest {
 
     @Test
     public void completeTheRegistrationForTheStudent() {
-        toRegisterTheStudent.fillTheForm("Juan", "Perez", "username@prueba.com", "3124567897", "22 Sep 2000", "english", System.getProperty("user.dir") + "\\src\\test\\java\\com\\demoqa\\resources\\toolsQA.png", "Dg 90 55 - 45", "NCR", "Delhi");
+        toRegisterTheStudent.fillTheFormWithMandatoryFields("Juan", "Perez", "3124567897");
         Assertions.assertEquals("Thanks for submitting the form", toVerifyRegistration.getCompleteRegistrationMessage());
     }
 

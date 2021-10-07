@@ -1,21 +1,21 @@
-package com.automation.util;
+package com.automation.drivers;
 
 import org.openqa.selenium.WebDriver;
 
-public class SingletonBrowser {
+public class UniqueInstanceBrowser {
 
-    private static SingletonBrowser instanceOfSingletonBrowser = null;
+    private static UniqueInstanceBrowser instanceOfSingletonBrowser = null;
 
     private final WebDriver driver;
 
-    private SingletonBrowser() {
+    private UniqueInstanceBrowser() {
         driver = BrowserManager.build();
     }
 
-    synchronized public static SingletonBrowser getInstanceOfSingletonBrowser() {
+    synchronized public static UniqueInstanceBrowser getInstanceOfSingletonBrowser() {
 
         if (instanceOfSingletonBrowser == null) {
-            instanceOfSingletonBrowser = new SingletonBrowser();
+            instanceOfSingletonBrowser = new UniqueInstanceBrowser();
         }
 
         return instanceOfSingletonBrowser;
