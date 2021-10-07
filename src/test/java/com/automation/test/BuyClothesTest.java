@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
 
 
 public class BuyClothesTest {
@@ -53,7 +53,7 @@ public class BuyClothesTest {
 
     @AfterEach
     public void tearDown() {
-        getInstanceOfSingletonBrowser().getDriver().quit();
+        getInstanceOfSingletonBrowser().closeInstanceOfSingletonBrowser();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.automation.pages;
+package com.demoqa.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,15 +16,15 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
 
 
-public class PaymentPage {
+public class VerifyRegistrationPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(className = "bankwire")
-    private WebElement btnPaymentMethod;
+    @FindBy(id = "example-modal-sizes-title-lg")
+    private WebElement verifyElement;
 
-    public PaymentPage() {
+    public VerifyRegistrationPage() {
         wait = new FluentWait<>(getInstanceOfSingletonBrowser().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(MoveTargetOutOfBoundsException.class);
@@ -32,10 +32,9 @@ public class PaymentPage {
         PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
     }
 
-    public void chooseThePaymentMethod() {
-        wait.until(ExpectedConditions.visibilityOf(btnPaymentMethod));
-        btnPaymentMethod.click();
+    public String getCompleteRegistrationMessage() {
+        wait.until(ExpectedConditions.visibilityOf(verifyElement));
+        return verifyElement.getText();
 
     }
-
 }

@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.util.SingletonBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
 
 
 public class CompleteBuyPage {
