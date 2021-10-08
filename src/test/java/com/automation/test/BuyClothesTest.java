@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
 
 
 public class BuyClothesTest {
@@ -25,8 +25,8 @@ public class BuyClothesTest {
 
     @BeforeEach
     public void setUp() {
-        getInstanceOfSingletonBrowser().getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-        getInstanceOfSingletonBrowser().getDriver().navigate().to("http://automationpractice.com/");
+        getInstanceOfWebDriver().getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        getInstanceOfWebDriver().getDriver().navigate().to("http://automationpractice.com/");
         addToCart = new AddToCartPage();
         checkoutCloth = new CheckoutClothPage();
         toSignIn = new SignInPage();
@@ -53,7 +53,7 @@ public class BuyClothesTest {
 
     @AfterEach
     public void tearDown() {
-        getInstanceOfSingletonBrowser().closeInstanceOfSingletonBrowser();
+        getInstanceOfWebDriver().closeInstance();
     }
 
 }
