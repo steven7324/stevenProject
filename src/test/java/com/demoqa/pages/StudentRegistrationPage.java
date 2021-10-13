@@ -15,9 +15,9 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
-public class StudentRegistrationPage {
+public class StudentRegistrationPage extends VerifyRegistrationPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -60,33 +60,59 @@ public class StudentRegistrationPage {
 
     }
 
-    public StudentRegistrationPage setName(String name) {
+    public VerifyRegistrationPage fillTheForm(String name, String lastname, String email, String mobile, String birthDate, String subjects, String filePath, String address, String state, String city) {
+        student.setName(name);
+        student.setLastName(lastname);
+        student.setEmail(email);
+        student.setMobile(mobile);
+        student.setBirthDate(birthDate);
+        student.setSubjects(subjects);
+        student.setFilePath(filePath);
+        student.setAddress(address);
+        student.setState(state);
+        student.setCity(city);
+
+        txtName.sendKeys(student.getName());
+        txtLastName.sendKeys(student.getLastName());
+        txtEmail.sendKeys(student.getEmail());
+        rdbMaleGender.click();
+        txtMobile.sendKeys(student.getMobile());
+        txtMobile.sendKeys(Keys.TAB);
+        txtBirthDate.sendKeys(Keys.SPACE);
+        txtBirthDate.sendKeys(student.getBirthDate());
+        txtBirthDate.sendKeys(Keys.ENTER);
+        txtCurrentAddress.sendKeys(Keys.TAB);
+        wait.until(ExpectedConditions.visibilityOf(lstSubjects));
+        lstSubjects.sendKeys(student.getSubjects());
+        lstSubjects.sendKeys(Keys.TAB);
+        cklHobbiesSports.click();
+        uploadPicture.sendKeys(student.getFilePath());
+        txtCurrentAddress.sendKeys(student.getAddress());
+        lstStateAndCity.sendKeys(student.getState());
+        lstStateAndCity.sendKeys(Keys.TAB);
+        wait.until(ExpectedConditions.elementToBeClickable(lstCity));
+        lstCity.sendKeys(student.getCity());
+        lstCity.sendKeys(Keys.TAB);
+
+        wait.until(ExpectedConditions.visibilityOf(btnSubmit));
+        btnSubmit.submit();
+        return this;
+
+    }
+
+    public VerifyRegistrationPage fillTheForm(String name, String lastName, String mobile) {
         student.setName(name);
         txtName.sendKeys(student.getName());
-        return this;
-    }
-
-    public StudentRegistrationPage setLastName(String lastName) {
         student.setLastName(lastName);
         txtLastName.sendKeys(student.getLastName());
-        return this;
-    }
-
-    public StudentRegistrationPage setGender() {
         rdbMaleGender.click();
-        return this;
-
-    }
-    public StudentRegistrationPage setMobile(String mobile) {
         student.setMobile(mobile);
         txtMobile.sendKeys(student.getMobile());
         txtMobile.sendKeys(Keys.TAB);
         txtCurrentAddress.sendKeys(Keys.TAB);
-        return this;
-    }
-
-    public void submit() {
         wait.until(ExpectedConditions.visibilityOf(btnSubmit));
-        this.btnSubmit.submit();
+        btnSubmit.submit();
+        return this;
+
     }
 }

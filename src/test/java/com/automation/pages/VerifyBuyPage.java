@@ -13,7 +13,8 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class VerifyBuyPage {
@@ -32,9 +33,10 @@ public class VerifyBuyPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public String getCompleteOrderMessage() {
+    public VerifyBuyPage getCompleteOrderMessage(String successMessage) {
         wait.until(ExpectedConditions.visibilityOf(verifyElement));
-        return verifyElement.getText();
+        assertEquals(successMessage, verifyElement.getText());
+        return this;
 
     }
 }

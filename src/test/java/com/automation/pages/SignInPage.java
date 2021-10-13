@@ -13,10 +13,10 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class SignInPage {
+public class SignInPage extends AddressPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -38,12 +38,13 @@ public class SignInPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void sendTheCredentials(String username, String password) {
+    public AddressPage sendTheCredentials(String username, String password) {
         wait.until(ExpectedConditions.visibilityOf(txtEmail));
         txtEmail.sendKeys(username);
         wait.until(ExpectedConditions.elementToBeClickable(txtPassword));
         txtPassword.sendKeys(password);
         btnSubmit.click();
+        return this;
 
     }
 

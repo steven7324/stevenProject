@@ -2,20 +2,20 @@ package com.automation.drivers;
 
 import org.openqa.selenium.WebDriver;
 
-public class instantiateDriver {
+public class InstantiateDriver {
 
-    private static instantiateDriver instanceOfWebDriver = null;
+    private static InstantiateDriver instanceOfWebDriver = null;
 
     private final WebDriver driver;
 
-    private instantiateDriver() {
+    private InstantiateDriver() {
         driver = BrowserManager.build();
     }
 
-    synchronized public static instantiateDriver getInstanceOfWebDriver() {
+    synchronized public static InstantiateDriver getInstanceOfWebDriver() {
 
         if (instanceOfWebDriver == null) {
-            instanceOfWebDriver = new instantiateDriver();
+            instanceOfWebDriver = new InstantiateDriver();
         }
 
         return instanceOfWebDriver;
@@ -25,7 +25,7 @@ public class instantiateDriver {
         return driver;
     }
 
-    public void closeInstance(){
+    public void closeInstance() {
         instanceOfWebDriver = null;
         driver.quit();
     }

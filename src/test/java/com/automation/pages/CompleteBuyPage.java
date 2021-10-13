@@ -12,10 +12,10 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class CompleteBuyPage {
+public class CompleteBuyPage extends VerifyBuyPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -31,8 +31,9 @@ public class CompleteBuyPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void confirmTheOrder() {
+    public VerifyBuyPage confirmTheOrder() {
         btnConfirmOrder.click();
+        return this;
 
     }
 

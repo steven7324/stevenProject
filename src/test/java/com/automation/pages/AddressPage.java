@@ -12,15 +12,15 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class AddressPage {
+public class AddressPage extends ShippingPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
 
-   @FindBy(xpath = "//span[text()='Proceed to checkout']")
+    @FindBy(xpath = "//span[text()='Proceed to checkout']")
     private WebElement btnCheckoutAddress;
 
     public AddressPage() {
@@ -31,7 +31,9 @@ public class AddressPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void proceedToCheckout() {
+    public ShippingPage proceedToCheckoutAddress() {
         btnCheckoutAddress.click();
+        return this;
+
     }
 }

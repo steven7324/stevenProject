@@ -13,10 +13,10 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class PaymentPage {
+public class PaymentPage extends CompleteBuyPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -32,9 +32,10 @@ public class PaymentPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void chooseThePaymentMethod() {
+    public CompleteBuyPage chooseThePaymentMethod() {
         wait.until(ExpectedConditions.visibilityOf(btnPaymentMethod));
         btnPaymentMethod.click();
+        return this;
 
     }
 

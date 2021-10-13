@@ -12,10 +12,10 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class ShippingPage {
+public class ShippingPage extends PaymentPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -34,8 +34,9 @@ public class ShippingPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void proceedToCheckout() {
+    public PaymentPage proceedToCheckoutShipping() {
         ckbAgreeTerms.click();
         btnCheckoutShipping.click();
+        return this;
     }
 }

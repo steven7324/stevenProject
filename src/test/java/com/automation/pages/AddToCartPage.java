@@ -14,10 +14,10 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.instantiateDriver.getInstanceOfWebDriver;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class AddToCartPage {
+public class AddToCartPage extends CheckoutClothPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -36,12 +36,14 @@ public class AddToCartPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void theChosenCloth() {
+    public CheckoutClothPage theChosenCloth() {
         btnViewCloth.sendKeys(Keys.DOWN);
         wait.until(ExpectedConditions.visibilityOf(btnViewCloth));
         actions.moveToElement(btnViewCloth).perform();
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
+        return this;
+
     }
 
 }
