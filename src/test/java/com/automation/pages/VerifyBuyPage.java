@@ -14,7 +14,6 @@ import java.time.Duration;
 import java.util.NoSuchElementException;
 
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class VerifyBuyPage {
@@ -33,10 +32,9 @@ public class VerifyBuyPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public VerifyBuyPage getCompleteOrderMessage(String successMessage) {
+    public String getCompleteOrderMessage() {
         wait.until(ExpectedConditions.visibilityOf(verifyElement));
-        assertEquals(successMessage, verifyElement.getText());
-        return this;
+        return verifyElement.getText();
 
     }
 }

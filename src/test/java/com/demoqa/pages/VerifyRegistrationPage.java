@@ -1,6 +1,5 @@
 package com.demoqa.pages;
 
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -33,10 +32,9 @@ public class VerifyRegistrationPage {
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public VerifyRegistrationPage getCompleteRegistrationMessage(String successMessage) {
+    public String getCompleteRegistrationMessage() {
         wait.until(ExpectedConditions.visibilityOf(verifyElement));
-        Assertions.assertEquals(successMessage, verifyElement.getText());
-        return this;
+        return verifyElement.getText();
 
     }
 }
