@@ -27,13 +27,14 @@ public class AddressPage {
     public AddressPage() {
         wait = new FluentWait<>(getInstanceOfWebDriver().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
-                .ignoring(MoveTargetOutOfBoundsException.class);
+                .ignoring(MoveTargetOutOfBoundsException.class)
+                .ignoring(Throwable.class);
         actions = new Actions(getInstanceOfWebDriver().getDriver());
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
     public ShippingPage proceedToCheckoutAddress() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnCheckoutAddress));
+        wait.until(ExpectedConditions.visibilityOf(btnCheckoutAddress));
         btnCheckoutAddress.click();
         return new ShippingPage();
 

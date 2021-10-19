@@ -33,15 +33,15 @@ public class SignInPage {
     public SignInPage() {
         wait = new FluentWait<>(getInstanceOfWebDriver().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
-                .ignoring(MoveTargetOutOfBoundsException.class);
+                .ignoring(MoveTargetOutOfBoundsException.class)
+                .ignoring(Throwable.class);
         actions = new Actions(getInstanceOfWebDriver().getDriver());
         PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
     public AddressPage sendTheCredentials(String username, String password) {
-        wait.until(ExpectedConditions.visibilityOf(txtEmail));
+        wait.until(ExpectedConditions.elementToBeClickable(txtEmail));
         txtEmail.sendKeys(username);
-        wait.until(ExpectedConditions.elementToBeClickable(txtPassword));
         txtPassword.sendKeys(password);
         btnSubmit.click();
         return new AddressPage();
