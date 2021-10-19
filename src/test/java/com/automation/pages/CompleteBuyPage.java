@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class CompleteBuyPage extends VerifyBuyPage {
+public class CompleteBuyPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -33,7 +33,7 @@ public class CompleteBuyPage extends VerifyBuyPage {
 
     public VerifyBuyPage confirmTheOrder() {
         btnConfirmOrder.click();
-        return this;
+        return new VerifyBuyPage();
 
     }
 

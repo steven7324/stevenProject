@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class CheckoutClothPage extends SummaryPage {
+public class CheckoutClothPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -35,7 +35,7 @@ public class CheckoutClothPage extends SummaryPage {
     public SummaryPage inTheMainPage() {
         wait.until(ExpectedConditions.visibilityOf(btnCheckout));
         btnCheckout.click();
-        return this;
+        return new SummaryPage();
 
     }
 

@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
-public class StudentRegistrationPage extends VerifyRegistrationPage {
+public class StudentRegistrationPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -96,7 +96,7 @@ public class StudentRegistrationPage extends VerifyRegistrationPage {
 
         wait.until(ExpectedConditions.visibilityOf(btnSubmit));
         btnSubmit.submit();
-        return this;
+        return new VerifyRegistrationPage();
 
     }
 
@@ -112,7 +112,7 @@ public class StudentRegistrationPage extends VerifyRegistrationPage {
         txtCurrentAddress.sendKeys(Keys.TAB);
         wait.until(ExpectedConditions.visibilityOf(btnSubmit));
         btnSubmit.submit();
-        return this;
+        return new VerifyRegistrationPage();
 
     }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
@@ -15,7 +16,7 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class AddressPage extends ShippingPage {
+public class AddressPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -32,8 +33,9 @@ public class AddressPage extends ShippingPage {
     }
 
     public ShippingPage proceedToCheckoutAddress() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnCheckoutAddress));
         btnCheckoutAddress.click();
-        return this;
+        return new ShippingPage();
 
     }
 }

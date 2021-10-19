@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class PaymentPage extends CompleteBuyPage {
+public class PaymentPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -35,7 +35,7 @@ public class PaymentPage extends CompleteBuyPage {
     public CompleteBuyPage chooseThePaymentMethod() {
         wait.until(ExpectedConditions.visibilityOf(btnPaymentMethod));
         btnPaymentMethod.click();
-        return this;
+        return new CompleteBuyPage();
 
     }
 

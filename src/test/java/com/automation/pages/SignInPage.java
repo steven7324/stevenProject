@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class SignInPage extends AddressPage {
+public class SignInPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -44,7 +44,7 @@ public class SignInPage extends AddressPage {
         wait.until(ExpectedConditions.elementToBeClickable(txtPassword));
         txtPassword.sendKeys(password);
         btnSubmit.click();
-        return this;
+        return new AddressPage();
 
     }
 

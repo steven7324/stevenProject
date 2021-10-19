@@ -15,7 +15,7 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class ShippingPage extends PaymentPage {
+public class ShippingPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -37,6 +37,6 @@ public class ShippingPage extends PaymentPage {
     public PaymentPage proceedToCheckoutShipping() {
         ckbAgreeTerms.click();
         btnCheckoutShipping.click();
-        return this;
+        return new PaymentPage();
     }
 }

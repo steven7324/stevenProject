@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
-public class AddToCartPage extends CheckoutClothPage {
+public class AddToCartPage {
 
     private Wait<WebDriver> wait;
     private Actions actions;
@@ -42,7 +42,7 @@ public class AddToCartPage extends CheckoutClothPage {
         actions.moveToElement(btnViewCloth).perform();
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
-        return this;
+        return new CheckoutClothPage();
 
     }
 
