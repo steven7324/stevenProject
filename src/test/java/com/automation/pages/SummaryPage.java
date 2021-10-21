@@ -21,7 +21,7 @@ public class SummaryPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(xpath = "//span[text()='Proceed to checkout']")
+    @FindBy(css = "p a[title='Proceed to checkout']")
     private WebElement btnCheckoutSummary;
 
     public SummaryPage() {

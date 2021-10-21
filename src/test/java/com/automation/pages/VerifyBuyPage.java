@@ -21,7 +21,7 @@ public class VerifyBuyPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(xpath = "//p[@class='cheque-indent']")
+    @FindBy(css = ".cheque-indent")
     private WebElement verifyElement;
 
     public VerifyBuyPage() {

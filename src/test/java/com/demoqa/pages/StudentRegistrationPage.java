@@ -23,31 +23,31 @@ public class StudentRegistrationPage {
     private Actions actions;
     private Student student;
 
-    @FindBy(id = "firstName")
+    @FindBy(css = "#firstName")
     private WebElement txtName;
-    @FindBy(id = "lastName")
+    @FindBy(css = "#lastName")
     private WebElement txtLastName;
-    @FindBy(id = "userEmail")
+    @FindBy(css = "#userEmail")
     private WebElement txtEmail;
-    @FindBy(xpath = "//label[@for='gender-radio-1']")
+    @FindBy(css = "label[for='gender-radio-1']")
     private WebElement rdbMaleGender;
-    @FindBy(id = "userNumber")
+    @FindBy(css = "#userNumber")
     private WebElement txtMobile;
-    @FindBy(id = "dateOfBirthInput")
+    @FindBy(css = "#dateOfBirthInput")
     private WebElement txtBirthDate;
-    @FindBy(id = "subjectsInput")
+    @FindBy(css = "#subjectsInput")
     private WebElement lstSubjects;
-    @FindBy(xpath = "//label[@for='hobbies-checkbox-1']")
+    @FindBy(css = "label[for='hobbies-checkbox-1']")
     private WebElement cklHobbiesSports;
     @FindBy(css = "#uploadPicture.form-control-file")
     private WebElement uploadPicture;
-    @FindBy(id = "currentAddress")
+    @FindBy(css = "#currentAddress")
     private WebElement txtCurrentAddress;
-    @FindBy(id = "react-select-3-input")
+    @FindBy(css = "#react-select-3-input")
     private WebElement lstStateAndCity;
-    @FindBy(id = "react-select-4-input")
+    @FindBy(css = "#react-select-4-input")
     private WebElement lstCity;
-    @FindBy(id = "submit")
+    @FindBy(css = "#submit")
     private WebElement btnSubmit;
 
     public StudentRegistrationPage() {

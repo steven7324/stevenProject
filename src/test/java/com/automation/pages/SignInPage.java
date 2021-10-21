@@ -21,13 +21,13 @@ public class SignInPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(id = "email")
+    @FindBy(css = "#email")
     private WebElement txtEmail;
 
-    @FindBy(id = "passwd")
+    @FindBy(css = "#passwd")
     private WebElement txtPassword;
 
-    @FindBy(id = "SubmitLogin")
+    @FindBy(css = "#SubmitLogin")
     private WebElement btnSubmit;
 
     public SignInPage() {
@@ -40,7 +40,7 @@ public class SignInPage {
     }
 
     public AddressPage sendTheCredentials(String username, String password) {
-        wait.until(ExpectedConditions.elementToBeClickable(txtEmail));
+        wait.until(ExpectedConditions.visibilityOf(txtEmail));
         txtEmail.sendKeys(username);
         txtPassword.sendKeys(password);
         btnSubmit.click();

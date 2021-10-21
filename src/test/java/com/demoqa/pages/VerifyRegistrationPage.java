@@ -21,7 +21,7 @@ public class VerifyRegistrationPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(id = "example-modal-sizes-title-lg")
+    @FindBy(css = "#example-modal-sizes-title-lg")
     private WebElement verifyElement;
 
     public VerifyRegistrationPage() {
