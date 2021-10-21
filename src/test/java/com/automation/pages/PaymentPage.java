@@ -21,7 +21,7 @@ public class PaymentPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(className = "bankwire")
+    @FindBy(css = ".bankwire")
     private WebElement btnPaymentMethod;
 
     public PaymentPage() {

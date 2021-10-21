@@ -22,10 +22,10 @@ public class AddToCartPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(xpath = "(//ul[@id='homefeatured']/li//a[@class='product-name'])[1]")
+    @FindBy(css = "li[class*='first-item-of-mobile-line'] a[class='product-name'][title='Faded Short Sleeve T-shirts']")
     private WebElement btnViewCloth;
 
-    @FindBy(xpath = "(//span[normalize-space()='Add to cart'])[1]")
+    @FindBy(css = "li[class*='first-item-of-mobile-line'] a[data-id-product='1']")
     private WebElement btnAddToCart;
 
     public AddToCartPage() {

@@ -21,7 +21,7 @@ public class AddressPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(xpath = "//span[text()='Proceed to checkout']")
+    @FindBy(css = "button[name=processAddress]")
     private WebElement btnCheckoutAddress;
 
     public AddressPage() {

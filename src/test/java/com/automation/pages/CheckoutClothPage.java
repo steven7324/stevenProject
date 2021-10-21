@@ -21,7 +21,7 @@ public class CheckoutClothPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(xpath = "//a[@title='Proceed to checkout']")
+    @FindBy(css = "a[title='Proceed to checkout']")
     private WebElement btnCheckout;
 
     public CheckoutClothPage() {

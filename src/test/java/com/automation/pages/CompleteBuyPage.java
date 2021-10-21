@@ -21,7 +21,7 @@ public class CompleteBuyPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(xpath = "//button[normalize-space()='I confirm my order']")
+    @FindBy(css = "button[class*='button-medium'][type=submit]")
     private WebElement btnConfirmOrder;
 
     public CompleteBuyPage() {

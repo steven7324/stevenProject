@@ -21,10 +21,10 @@ public class ShippingPage {
     private Wait<WebDriver> wait;
     private Actions actions;
 
-    @FindBy(id = "cgv")
+    @FindBy(css = "#cgv")
     private WebElement ckbAgreeTerms;
 
-    @FindBy(xpath = "//button[normalize-space() = 'Proceed to checkout']")
+    @FindBy(css = "button[name='processCarrier']")
     private WebElement btnCheckoutShipping;
 
     public ShippingPage() {
