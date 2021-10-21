@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
 public class SignInPage {
@@ -31,19 +31,20 @@ public class SignInPage {
     private WebElement btnSubmit;
 
     public SignInPage() {
-        wait = new FluentWait<>(getInstanceOfSingletonBrowser().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
+        wait = new FluentWait<>(getInstanceOfWebDriver().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
-                .ignoring(MoveTargetOutOfBoundsException.class);
-        actions = new Actions(getInstanceOfSingletonBrowser().getDriver());
-        PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
+                .ignoring(MoveTargetOutOfBoundsException.class)
+                .ignoring(Throwable.class);
+        actions = new Actions(getInstanceOfWebDriver().getDriver());
+        PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void sendTheCredentials(String username, String password) {
-        wait.until(ExpectedConditions.visibilityOf(txtEmail));
+    public AddressPage sendTheCredentials(String username, String password) {
+        wait.until(ExpectedConditions.elementToBeClickable(txtEmail));
         txtEmail.sendKeys(username);
-        wait.until(ExpectedConditions.elementToBeClickable(txtPassword));
         txtPassword.sendKeys(password);
         btnSubmit.click();
+        return new AddressPage();
 
     }
 

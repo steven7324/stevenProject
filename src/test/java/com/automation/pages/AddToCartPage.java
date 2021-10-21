@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
 public class AddToCartPage {
@@ -29,19 +29,22 @@ public class AddToCartPage {
     private WebElement btnAddToCart;
 
     public AddToCartPage() {
-        wait = new FluentWait<>(getInstanceOfSingletonBrowser().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
+        wait = new FluentWait<>(getInstanceOfWebDriver().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
-                .ignoring(MoveTargetOutOfBoundsException.class);
-        actions = new Actions(getInstanceOfSingletonBrowser().getDriver());
-        PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
+                .ignoring(MoveTargetOutOfBoundsException.class)
+                .ignoring(Throwable.class);
+        actions = new Actions(getInstanceOfWebDriver().getDriver());
+        PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void theChosenCloth() {
+    public CheckoutClothPage theChosenCloth() {
         btnViewCloth.sendKeys(Keys.DOWN);
         wait.until(ExpectedConditions.visibilityOf(btnViewCloth));
         actions.moveToElement(btnViewCloth).perform();
         wait.until(ExpectedConditions.visibilityOf(btnAddToCart));
         btnAddToCart.click();
+        return new CheckoutClothPage();
+
     }
 
 }

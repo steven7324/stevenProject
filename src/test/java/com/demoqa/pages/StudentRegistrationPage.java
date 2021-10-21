@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.Wait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 public class StudentRegistrationPage {
 
@@ -51,16 +51,16 @@ public class StudentRegistrationPage {
     private WebElement btnSubmit;
 
     public StudentRegistrationPage() {
-        wait = new FluentWait<>(getInstanceOfSingletonBrowser().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
+        wait = new FluentWait<>(getInstanceOfWebDriver().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
                 .ignoring(MoveTargetOutOfBoundsException.class);
-        actions = new Actions(getInstanceOfSingletonBrowser().getDriver());
-        PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
+        actions = new Actions(getInstanceOfWebDriver().getDriver());
+        PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
         student = new Student();
 
     }
 
-    public void fillTheForm(String name, String lastname, String email, String mobile, String birthDate, String subjects, String filePath, String address, String state, String city) {
+    public VerifyRegistrationPage fillTheForm(String name, String lastname, String email, String mobile, String birthDate, String subjects, String filePath, String address, String state, String city) {
         student.setName(name);
         student.setLastName(lastname);
         student.setEmail(email);
@@ -96,22 +96,23 @@ public class StudentRegistrationPage {
 
         wait.until(ExpectedConditions.visibilityOf(btnSubmit));
         btnSubmit.submit();
+        return new VerifyRegistrationPage();
 
     }
 
-    public void fillTheFormWithMandatoryFields(String name, String lastname, String mobile) {
+    public VerifyRegistrationPage fillTheForm(String name, String lastName, String mobile) {
         student.setName(name);
-        student.setLastName(lastname);
-        student.setMobile(mobile);
-
         txtName.sendKeys(student.getName());
+        student.setLastName(lastName);
         txtLastName.sendKeys(student.getLastName());
         rdbMaleGender.click();
+        student.setMobile(mobile);
         txtMobile.sendKeys(student.getMobile());
         txtMobile.sendKeys(Keys.TAB);
         txtCurrentAddress.sendKeys(Keys.TAB);
         wait.until(ExpectedConditions.visibilityOf(btnSubmit));
         btnSubmit.submit();
+        return new VerifyRegistrationPage();
 
     }
 }

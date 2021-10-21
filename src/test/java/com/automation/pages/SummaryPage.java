@@ -6,13 +6,14 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;
 
-import static com.automation.drivers.UniqueInstanceBrowser.getInstanceOfSingletonBrowser;
+import static com.automation.drivers.InstantiateDriver.getInstanceOfWebDriver;
 
 
 public class SummaryPage {
@@ -24,15 +25,19 @@ public class SummaryPage {
     private WebElement btnCheckoutSummary;
 
     public SummaryPage() {
-        wait = new FluentWait<>(getInstanceOfSingletonBrowser().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
+        wait = new FluentWait<>(getInstanceOfWebDriver().getDriver()).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(3))
                 .ignoring(NoSuchElementException.class)
-                .ignoring(MoveTargetOutOfBoundsException.class);
-        actions = new Actions(getInstanceOfSingletonBrowser().getDriver());
-        PageFactory.initElements(getInstanceOfSingletonBrowser().getDriver(), this);
+                .ignoring(MoveTargetOutOfBoundsException.class)
+                .ignoring(Throwable.class);
+        actions = new Actions(getInstanceOfWebDriver().getDriver());
+        PageFactory.initElements(getInstanceOfWebDriver().getDriver(), this);
     }
 
-    public void proceedToCheckout() {
+    public SignInPage proceedToCheckoutSummary() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnCheckoutSummary));
         btnCheckoutSummary.click();
+        return new SignInPage();
+
     }
 
 }
